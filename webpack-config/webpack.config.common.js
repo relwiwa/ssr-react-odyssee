@@ -13,7 +13,7 @@ const webpackConfigCommon = webpackMerge([
     resolve: {
       extensions: ['.js', '.jsx'],
     },
-     plugins: [
+    plugins: [
       new HtmlWebpackPlugin({
         template: path.join(__dirname, '../', 'react-client', 'index.html'),
       }),

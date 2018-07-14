@@ -7,10 +7,10 @@ const webpackConfigDev = webpackMerge([
     mode: 'development',
   },
   {
-    output: {
+/*     output: {
       publicPath: '/',
     },
-  },
+ */  },
   webpackParts.devServer(),
 /*   webpackParts.loadStyles({
     use: [{
