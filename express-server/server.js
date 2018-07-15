@@ -4,6 +4,7 @@ const path = require('path');
 const port = process.env.PORT || 3000;
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 
 import SSROdyssee from '../react-client/components/SSROdyssee';
 
@@ -20,7 +21,12 @@ if (process.env.NODE_ENV !== 'production') {
 else {
   app.use('/static-files', express.static(path.join(__dirname, 'Workspace', 'ssr-odyssee', 'express-server', 'build')));
   app.get('*', (req, res) => {
-    const renderedComponent = renderToString(<SSROdyssee />);
+    const renderedComponent = renderToString(
+      <StaticRouter location={req.url} context={{}}>
+        <SSROdyssee />
+      </StaticRouter>
+    );
+
     fs.readFile('./express-server/build/index.html', 'utf8', (err, htmlData) => {
       if (err) {
           console.error('err', err);
