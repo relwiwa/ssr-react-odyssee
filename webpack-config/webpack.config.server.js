@@ -21,7 +21,15 @@ const webpackConfigServer = webpackMerge([
     /*  prevents webpack from packing imported libraries into
         the bundle on the server */
     externals: [webpackNodeExternals()],
-  }
+    module: {
+      rules: [
+        {
+          test: /\.s?css$/,
+          loader: 'ignore-loader',
+        },
+      ],
+    },
+  },
 ]);
 
 const x = webpackMerge(webpackConfigCommon, webpackConfigServer);

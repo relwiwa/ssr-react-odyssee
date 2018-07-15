@@ -1,7 +1,7 @@
 //const autoprefixer = require('autoprefixer');
-//const cssnano = require('cssnano');
-//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-//const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const cssnano = require('cssnano');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 //const webpack = require('webpack');
 //const BabelMinifyPlugin = require('babel-minify-webpack-plugin');
 

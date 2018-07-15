@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Component1 = (props) => <div>Component 1</div>
+import './Component1.css';
+
+const Component1 = (props) => <div className="component1">Component 1</div>
 
 export default Component1;

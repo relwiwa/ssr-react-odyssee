@@ -10,11 +10,12 @@
     "serve:client": "webpack-dev-server --env=development index=./react-client/index.js --config=webpack-config/webpack.config.js",
     "serve:express:dev": "set \"NODE_ENV=development\" && node express-server/server.js",
     "serve:express:prod": "npm run build && set \"NODE_ENV=production\" && node express-server/server.js",
-    "ssr-serve": "nodemon express-server/build-server/bundle.js"
+    "ssr-serve": "concurrently \"npm:build:client\" \"npm:build:server\" \"nodemon express-server/build-server/bundle.js\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cssnano": "^4.0.2",
     "express": "^4.16.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -30,8 +31,14 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react-app": "^3.1.2",
     "babel-register": "^6.26.0",
+    "concurrently": "^3.6.0",
+    "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "ignore-loader": "^0.1.2",
+    "mini-css-extract-plugin": "^0.4.1",
     "nodemon": "^1.18.2",
+    "optimize-css-assets-webpack-plugin": "^4.0.3",
+    "style-loader": "^0.21.0",
     "webpack-dev-server": "^3.1.4"
   }
 }
