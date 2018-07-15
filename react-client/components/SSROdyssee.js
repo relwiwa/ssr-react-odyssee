@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link, Route } from 'react-router-dom';
 
 import Component1 from './Component1';
 
@@ -14,7 +15,10 @@ class SSROdyssee extends Component {
     return (
       <div>
         <h1>Server side rendering with React, an Odyssee</h1>
-        <Component1 />
+        <div>
+          <Link to ="/">Home</Link> | <Link to="/route1">Route 1</Link>
+        </div>
+        <Route path="/route1" component={Component1} />
         <div>
           <h2>Counter</h2>
           <button
