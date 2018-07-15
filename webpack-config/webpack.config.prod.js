@@ -6,10 +6,10 @@ const webpackParts = require('./webpack.parts');
 const webpackConfigProd = webpackMerge([
   {
     mode: 'production',
-/*     output: {
+     output: {
       publicPath: '/static-files/',
     },    
- */  },
+  },
 /*   webpackParts.loadStyles({
     use: [
       MiniCssExtractPlugin.loader, // MiniCssExtractPlugin.loader should be used in production instead of style-loader

@@ -15,7 +15,7 @@ const webpackConfigServer = webpackMerge([
     // where to put the generated output file
     output: {
       filename: 'bundle.js',
-      path: path.resolve(__dirname, '../', 'express-server', 'build'),
+      path: path.resolve(__dirname, '../', 'express-server', 'build-server'),
     },
 
     /*  prevents webpack from packing imported libraries into

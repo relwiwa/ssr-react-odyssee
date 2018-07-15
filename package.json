@@ -10,7 +10,7 @@
     "serve:client": "webpack-dev-server --env=development index=./react-client/index.js --config=webpack-config/webpack.config.js",
     "serve:express:dev": "set \"NODE_ENV=development\" && node express-server/server.js",
     "serve:express:prod": "npm run build && set \"NODE_ENV=production\" && node express-server/server.js",
-    "ssr-serve": "nodemon express-server/build/bundle.js"
+    "ssr-serve": "nodemon express-server/build-server/bundle.js"
   },
   "author": "",
   "license": "ISC",

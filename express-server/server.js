@@ -1,7 +1,11 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const port = process.env.PORT || 3000;
 import React from 'react';
+import { renderToString } from 'react-dom/server';
+
+import SSROdyssee from '../react-client/components/SSROdyssee';
 
 const app = express();
 
@@ -14,10 +18,18 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackMiddleware(webpack(webpackConfig)));
 }
 else {
-  app.use(express.static(path.join(__dirname, 'Workspace', 'ssr-odyssee', 'express-server', 'build')));
+  app.use('/static-files', express.static(path.join(__dirname, 'Workspace', 'ssr-odyssee', 'express-server', 'build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'Workspace', 'ssr-odyssee', 'express-server', 'build', 'index.html'));
-  })
+    const renderedComponent = renderToString(<SSROdyssee />);
+    fs.readFile('./express-server/build/index.html', 'utf8', (err, htmlData) => {
+      if (err) {
+          console.error('err', err);
+          return res.status(404).end()
+      }
+
+      res.send(htmlData.replace('<div id="root"></div>', `<div id="root">${renderedComponent}</div>`));
+    });
+  });
  }
 
 app.listen(port, () => console.log('Listening'));
