@@ -8,10 +8,13 @@ class SSROdyssee extends Component {
     super(props);
     this.state = {
       counter: 0,
+      loaded: false,
+      lazyLoadedComponent: null,
     };
   }
   
   render() {
+    const { loaded, lazyLoadedComponent: LazyLoadedComponent } = this.state;
     return (
       <div>
         <h1>Server side rendering with React, an Odyssee</h1>
@@ -32,6 +35,17 @@ class SSROdyssee extends Component {
           >
             Decrease
           </button>
+        </div>
+        <div>
+          <button
+            onClick={() => import('./Component2').then(lazyLoadedComponent => this.setState({ loaded: true, lazyLoadedComponent: lazyLoadedComponent.default }))}
+          >
+            Lazy Load Component 2
+          </button>
+        </div>
+        <div>
+          {!loaded && <p>Click Button To Load Component 2</p>}
+          {loaded && <LazyLoadedComponent />}
         </div>
       </div>
     );

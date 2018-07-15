@@ -1,0 +1,1 @@
+exports.ids=[0],exports.modules={10:function(e,n,t){"use strict";t.r(n);var o=t(0),r=t.n(o);t(9);n.default=function(e){return r.a.createElement("div",{className:"component2"},"Component 2")}},9:function(e,n){}};
