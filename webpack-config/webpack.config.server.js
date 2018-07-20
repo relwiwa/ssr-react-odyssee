@@ -1,3 +1,7 @@
+/*  Webpack configuration for server-side rendering
+    adapted from Stephen Grider's Udemy course about
+    SSR a React and Redux application */
+
 const webpackMerge = require('webpack-merge');
 const path = require('path');
 const webpackNodeExternals = require('webpack-node-externals');
@@ -9,10 +13,8 @@ const webpackConfigServer = webpackMerge([
     target: 'node',
     mode: 'production',
     plugins: [],
-    // entry point for server application
     entry: './express-server/server.js',
 
-    // where to put the generated output file
     output: {
       filename: 'bundle.js',
       path: path.resolve(__dirname, '../', 'express-server', 'build-server'),
@@ -21,6 +23,8 @@ const webpackConfigServer = webpackMerge([
     /*  prevents webpack from packing imported libraries into
         the bundle on the server */
     externals: [webpackNodeExternals()],
+
+    /* ignore all files but javascript when processing files on the server */
     module: {
       rules: [
         {
@@ -32,6 +36,6 @@ const webpackConfigServer = webpackMerge([
   },
 ]);
 
-const x = webpackMerge(webpackConfigCommon, webpackConfigServer);
-x.plugins = [];
-module.exports = x;
+const webpackConfigMerged = webpackMerge(webpackConfigCommon, webpackConfigServer);
+webpackConfigMerged.plugins = [];
+module.exports = webpackConfigMerged;
