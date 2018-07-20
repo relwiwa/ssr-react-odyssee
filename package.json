@@ -1,5 +1,5 @@
 {
-  "name": "ssr-odyssee",
+  "name": "ssr-react-odyssee",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "serve:express:prod": "npm run build && set \"NODE_ENV=production\" && node express-server/server.js",
     "ssr-serve": "concurrently \"npm:build:client\" \"npm:build:server\" \"nodemon express-server/build-server/bundle.js\""
   },
-  "author": "",
+  "author": "Walter",
   "license": "ISC",
   "dependencies": {
     "cssnano": "^4.0.2",
